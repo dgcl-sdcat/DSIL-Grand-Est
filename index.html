@@ -19,12 +19,6 @@
         <title></title>
     </head>
     <body>
-          <h1> Communes et EPCI de la région Grand Est qui ont bénéficié de la DSIL exceptionnelle <img src="https://www.economie.gouv.fr/files/files/directions_services/plan-de-relance/logo-FR-kit-com.png" height="100px" width="200px" align=right /> </h1>
-        <h3> Projets classés selon leur thématique </3>
-        
-        <h5> Au 30 Janvier 2021 </h5>
-        
-        <hr>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -36,126 +30,114 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="data/RgionGrandEst_1.js"></script>
-        <script src="data/DpartementsGrandEst_2.js"></script>
+        <script src="data/DpartementsGrandEst_1.js"></script>
+        <script src="data/RgionGrandEst_2.js"></script>
         <script src="data/Transitioncologique_3.js"></script>
         <script src="data/Prservationdupatrimoine_4.js"></script>
         <script src="data/Rsiliencesanitaire_5.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        })
+        }).fitBounds([[47.06279387096629,1.9717941024827514],[50.37053602156591,10.207347804075896]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
-            if (bounds_group.getLayers().length) {
-                map.fitBounds(bounds_group.getBounds());
-            }
         }
-        map.createPane('pane_FonddecarteOSM_0');
-        map.getPane('pane_FonddecarteOSM_0').style.zIndex = 400;
-        var layer_FonddecarteOSM_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            pane: 'pane_FonddecarteOSM_0',
-            opacity: 0.5,
-            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+        map.createPane('pane_OpenStreetMap_0');
+        map.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
+        var layer_OpenStreetMap_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenStreetMap_0',
+            opacity: 1.0,
+            attribution: '',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
-            maxNativeZoom: 19
+            maxNativeZoom: 18
         });
-        layer_FonddecarteOSM_0;
-        map.addLayer(layer_FonddecarteOSM_0);
-        function pop_RgionGrandEst_1(feature, layer) {
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+        function pop_DpartementsGrandEst_1(feature, layer) {
         }
 
-        function style_RgionGrandEst_1_0() {
+        function style_DpartementsGrandEst_1_0() {
             return {
-                pane: 'pane_RgionGrandEst_1',
+                pane: 'pane_DpartementsGrandEst_1',
                 opacity: 1,
-                color: 'rgba(145,92,159,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(133,182,111,0.0)',
-                interactive: true,
-            }
-        }
-        map.createPane('pane_RgionGrandEst_1');
-        map.getPane('pane_RgionGrandEst_1').style.zIndex = 401;
-        map.getPane('pane_RgionGrandEst_1').style['mix-blend-mode'] = 'normal';
-        var layer_RgionGrandEst_1 = new L.geoJson(json_RgionGrandEst_1, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_RgionGrandEst_1',
-            layerName: 'layer_RgionGrandEst_1',
-            pane: 'pane_RgionGrandEst_1',
-            onEachFeature: pop_RgionGrandEst_1,
-            style: style_RgionGrandEst_1_0,
-        });
-        bounds_group.addLayer(layer_RgionGrandEst_1);
-        map.addLayer(layer_RgionGrandEst_1);
-        function pop_DpartementsGrandEst_2(feature, layer) {
-        }
-
-        function style_DpartementsGrandEst_2_0() {
-            return {
-                pane: 'pane_DpartementsGrandEst_2',
-                opacity: 1,
-                color: 'rgba(195,134,212,1.0)',
+                color: 'rgba(83,181,238,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(125,139,143,0.0)',
+                fillColor: 'rgba(190,207,80,0.0)',
                 interactive: true,
             }
         }
-        map.createPane('pane_DpartementsGrandEst_2');
-        map.getPane('pane_DpartementsGrandEst_2').style.zIndex = 402;
-        map.getPane('pane_DpartementsGrandEst_2').style['mix-blend-mode'] = 'normal';
-        var layer_DpartementsGrandEst_2 = new L.geoJson(json_DpartementsGrandEst_2, {
+        map.createPane('pane_DpartementsGrandEst_1');
+        map.getPane('pane_DpartementsGrandEst_1').style.zIndex = 401;
+        map.getPane('pane_DpartementsGrandEst_1').style['mix-blend-mode'] = 'normal';
+        var layer_DpartementsGrandEst_1 = new L.geoJson(json_DpartementsGrandEst_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_DpartementsGrandEst_2',
-            layerName: 'layer_DpartementsGrandEst_2',
-            pane: 'pane_DpartementsGrandEst_2',
-            onEachFeature: pop_DpartementsGrandEst_2,
-            style: style_DpartementsGrandEst_2_0,
+            dataVar: 'json_DpartementsGrandEst_1',
+            layerName: 'layer_DpartementsGrandEst_1',
+            pane: 'pane_DpartementsGrandEst_1',
+            onEachFeature: pop_DpartementsGrandEst_1,
+            style: style_DpartementsGrandEst_1_0,
         });
-        bounds_group.addLayer(layer_DpartementsGrandEst_2);
-        map.addLayer(layer_DpartementsGrandEst_2);
+        bounds_group.addLayer(layer_DpartementsGrandEst_1);
+        map.addLayer(layer_DpartementsGrandEst_1);
+        function pop_RgionGrandEst_2(feature, layer) {
+        }
+
+        function style_RgionGrandEst_2_0() {
+            return {
+                pane: 'pane_RgionGrandEst_2',
+                opacity: 1,
+                color: 'rgba(183,61,218,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,89,137,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_RgionGrandEst_2');
+        map.getPane('pane_RgionGrandEst_2').style.zIndex = 402;
+        map.getPane('pane_RgionGrandEst_2').style['mix-blend-mode'] = 'normal';
+        var layer_RgionGrandEst_2 = new L.geoJson(json_RgionGrandEst_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_RgionGrandEst_2',
+            layerName: 'layer_RgionGrandEst_2',
+            pane: 'pane_RgionGrandEst_2',
+            onEachFeature: pop_RgionGrandEst_2,
+            style: style_RgionGrandEst_2_0,
+        });
+        bounds_group.addLayer(layer_RgionGrandEst_2);
+        map.addLayer(layer_RgionGrandEst_2);
         function pop_Transitioncologique_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Nom</th>\
-                        <td>' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Thème</th>\
-                        <td>' + (feature.properties['Thème'] !== null ? autolinker.link(feature.properties['Thème'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Thème</strong><br />' + (feature.properties['Thème'] !== null ? autolinker.link(feature.properties['Thème'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Projet</th>\
-                        <td>' + (feature.properties['Projet'] !== null ? autolinker.link(feature.properties['Projet'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Projet</strong><br />' + (feature.properties['Projet'] !== null ? autolinker.link(feature.properties['Projet'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Coût</th>\
-                        <td>' + (feature.properties['Coût'] !== null ? autolinker.link(feature.properties['Coût'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Coût</strong><br />' + (feature.properties['Coût'] !== null ? autolinker.link(feature.properties['Coût'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Subvention</th>\
-                        <td>' + (feature.properties['Subvention'] !== null ? autolinker.link(feature.properties['Subvention'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Part</th>\
-                        <td>' + (feature.properties['Part'] !== null ? autolinker.link(feature.properties['Part'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Subvention</strong><br />' + (feature.properties['Subvention'] !== null ? autolinker.link(feature.properties['Subvention'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -173,7 +155,7 @@
                 weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(99,212,84,1.0)',
+                fillColor: 'rgba(84,176,74,1.0)',
                 interactive: true,
             }
         }
@@ -200,28 +182,19 @@
         function pop_Prservationdupatrimoine_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Nom</th>\
-                        <td>' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Thème</th>\
-                        <td>' + (feature.properties['Thème'] !== null ? autolinker.link(feature.properties['Thème'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Thème</strong><br />' + (feature.properties['Thème'] !== null ? autolinker.link(feature.properties['Thème'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Projet</th>\
-                        <td>' + (feature.properties['Projet'] !== null ? autolinker.link(feature.properties['Projet'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Projet</strong><br />' + (feature.properties['Projet'] !== null ? autolinker.link(feature.properties['Projet'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Coût</th>\
-                        <td>' + (feature.properties['Coût'] !== null ? autolinker.link(feature.properties['Coût'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Coût</strong><br />' + (feature.properties['Coût'] !== null ? autolinker.link(feature.properties['Coût'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Subvention</th>\
-                        <td>' + (feature.properties['Subvention'] !== null ? autolinker.link(feature.properties['Subvention'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Part</th>\
-                        <td>' + (feature.properties['Part'] !== null ? autolinker.link(feature.properties['Part'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Subvention</strong><br />' + (feature.properties['Subvention'] !== null ? autolinker.link(feature.properties['Subvention'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -230,16 +203,16 @@
         function style_Prservationdupatrimoine_4_0() {
             return {
                 pane: 'pane_Prservationdupatrimoine_4',
-                radius: 5.999999999999998,
+                radius: 6.399999999999999,
                 opacity: 1,
-                color: 'rgba(255,166,0,1.0)',
+                color: 'rgba(179,92,21,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,200,98,1.0)',
+                fillColor: 'rgba(247,128,30,1.0)',
                 interactive: true,
             }
         }
@@ -266,28 +239,19 @@
         function pop_Rsiliencesanitaire_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Nom</th>\
-                        <td>' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(feature.properties['Nom'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Thème</th>\
-                        <td>' + (feature.properties['Thème'] !== null ? autolinker.link(feature.properties['Thème'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Thème</strong><br />' + (feature.properties['Thème'] !== null ? autolinker.link(feature.properties['Thème'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Projet</th>\
-                        <td>' + (feature.properties['Projet'] !== null ? autolinker.link(feature.properties['Projet'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Projet</strong><br />' + (feature.properties['Projet'] !== null ? autolinker.link(feature.properties['Projet'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Coût</th>\
-                        <td>' + (feature.properties['Coût'] !== null ? autolinker.link(feature.properties['Coût'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Coût</strong><br />' + (feature.properties['Coût'] !== null ? autolinker.link(feature.properties['Coût'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Subvention</th>\
-                        <td>' + (feature.properties['Subvention'] !== null ? autolinker.link(feature.properties['Subvention'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Part</th>\
-                        <td>' + (feature.properties['Part'] !== null ? autolinker.link(feature.properties['Part'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Subvention</strong><br />' + (feature.properties['Subvention'] !== null ? autolinker.link(feature.properties['Subvention'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -296,16 +260,16 @@
         function style_Rsiliencesanitaire_5_0() {
             return {
                 pane: 'pane_Rsiliencesanitaire_5',
-                radius: 5.999999999999998,
+                radius: 6.399999999999999,
                 opacity: 1,
-                color: 'rgba(93,204,207,1.0)',
+                color: 'rgba(66,175,238,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(181,242,244,1.0)',
+                fillColor: 'rgba(164,211,238,1.0)',
                 interactive: true,
             }
         }
@@ -330,7 +294,7 @@
         bounds_group.addLayer(layer_Rsiliencesanitaire_5);
         map.addLayer(layer_Rsiliencesanitaire_5);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Rsiliencesanitaire_5.png" /> Résilience sanitaire': layer_Rsiliencesanitaire_5,'<img src="legend/Prservationdupatrimoine_4.png" /> Préservation du patrimoine': layer_Prservationdupatrimoine_4,'<img src="legend/Transitioncologique_3.png" /> Transition écologique': layer_Transitioncologique_3,'<img src="legend/DpartementsGrandEst_2.png" /> Départements Grand-Est': layer_DpartementsGrandEst_2,'<img src="legend/RgionGrandEst_1.png" /> Région Grand-Est': layer_RgionGrandEst_1,"Fond de carte OSM": layer_FonddecarteOSM_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Rsiliencesanitaire_5.png" /> Résilience sanitaire': layer_Rsiliencesanitaire_5,'<img src="legend/Prservationdupatrimoine_4.png" /> Préservation du patrimoine': layer_Prservationdupatrimoine_4,'<img src="legend/Transitioncologique_3.png" /> Transition écologique': layer_Transitioncologique_3,'<img src="legend/RgionGrandEst_2.png" /> Région Grand Est': layer_RgionGrandEst_2,'<img src="legend/DpartementsGrandEst_1.png" /> Départements Grand Est': layer_DpartementsGrandEst_1,"OpenStreetMap": layer_OpenStreetMap_0,},{collapsed:false}).addTo(map);
         setBounds();
         </script>
     </body>
